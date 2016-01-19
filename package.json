@@ -1,0 +1,56 @@
+{
+  "name": "john",
+  "version": "0.0.0",
+  "description": "Make the npm3 node_modules folder easier to read/sort on OS X",
+  "license": "MIT",
+  "os": [
+    "darwin"
+  ],
+  "repository": "davej/john",
+  "author": {
+    "name": "DaveJ",
+    "email": "dave@davejeffery.com",
+    "url": "twitter.com/DaveJ"
+  },
+  "bin": "cli.js",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "xo && ava"
+  },
+  "files": [
+    "index.js",
+    "cli.js"
+  ],
+  "keywords": [
+    "cli-app",
+    "cli",
+    "npm",
+    "npm3",
+    "node_modules",
+    "flatdeps",
+    "osx",
+    "tag",
+    "tags",
+    "color",
+    "colour",
+    "finder",
+    "mavericks",
+    "yosemite",
+    "mac"
+  ],
+  "dependencies": {
+    "chalk": "^1.1.1",
+    "finder-tag": "^1.0.2",
+    "meow": "^3.6.0",
+    "pify": "^2.3.0"
+  },
+  "devDependencies": {
+    "ava": "^0.8.0",
+    "xo": "^0.12.1"
+  },
+  "xo": {
+    "space": 2
+  }
+}
