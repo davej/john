@@ -1,7 +1,7 @@
 {
   "name": "john",
   "version": "0.0.0",
-  "description": "Make npm3's node_modules folder easier to read/sort on OS X",
+  "description": "Make npm3's node_modules folder easier to find and sort on OS X",
   "license": "MIT",
   "os": [
     "darwin"

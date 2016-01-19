@@ -1,13 +1,13 @@
 # john [![Build Status](https://travis-ci.org/davej/john.svg?branch=master)](https://travis-ci.org/davej/john)
 
-> Make npm3's node_modules folder easier to read/sort on OS X
+> Make npm3's node_modules folder easier to find and sort on OS X
 
 npm3 has flat dependency trees, this is a good thing for many reasons.
 Unfortunately, this means your `node_modules` folder might contain hundreds (or thousands?)
-of modules and that makes it difficult to jump quickly debug/hack on issues with top-level dependencies.
+of modules and that makes it difficult to quickly debug/hack on issues with top-level dependencies.
 
 John is your man. He puts color tags on your top-level dependencies and devDependencies,
-this makes your to-level dependencies readable and sortable again.
+this makes your top-level dependencies easier to find and sort.
 
 *Note: This project is currently OS X only, but if you have ideas on how something similar could be implemented other platforms then create an issue.*
 
@@ -22,7 +22,7 @@ $ npm install --global john
 ```
 $ john --help
 
-  Make npm3's node_modules folder easier to read/sort on OS X
+  Make npm3's node_modules folder easier to find and sort on OS X
 
   Usage
     $ john
