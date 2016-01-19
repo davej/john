@@ -39,11 +39,11 @@ test('different colors', t =>
 );
 
 test('invalid path', t =>
-  fn('/foo/bar').then(t.fail, err => t.is(err.code, 'ENOENT'))
+  fn('/foo/bar').then(t.fail, err => t.ok(err.message.includes('couldn\'t find package.json')))
 );
 
 test('non-node path', t =>
-  fn('/tmp').then(t.fail, err => t.is(err.code, 'ENOENT'))
+  fn('/tmp').then(t.fail, err => t.ok(err.message.includes('couldn\'t find package.json')))
 );
 
 test.after('clear tags', t =>

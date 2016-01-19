@@ -1,7 +1,7 @@
 {
   "name": "john",
   "version": "1.0.0",
-  "description": "Make npm3's node_modules folder easier to find and sort on OS X",
+  "description": "Make npm3's flat dependencies easier to find and sort on OS X",
   "license": "MIT",
   "os": [
     "darwin"
@@ -44,7 +44,8 @@
     "chalk": "^1.1.1",
     "finder-tag": "^1.0.2",
     "meow": "^3.6.0",
-    "pify": "^2.3.0"
+    "pify": "^2.3.0",
+    "read-pkg-up": "^1.0.1"
   },
   "devDependencies": {
     "ava": "^0.8.0",
