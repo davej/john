@@ -11,7 +11,7 @@ this makes your to-level dependencies readable and sortable again.
 
 *Note: This project is currently OS X only, but if you have ideas on how something similar could be implemented other platforms then create an issue.*
 
-<div style="text-align:center"><img src ="https://cdn.rawgit.com/davej/john/a2b79a0ffc8da296d382bd99b29977195cb3976c/usage.gif" /></div>
+<p align="center"><img src ="https://cdn.rawgit.com/davej/john/a2b79a0ffc8da296d382bd99b29977195cb3976c/usage.gif" /></p>
 
 ## CLI
 
