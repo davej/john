@@ -4,7 +4,6 @@ import path from 'path';
 
 test('simple', t =>
   fn(__dirname).then(tagged => {
-    console.log(tagged);
     t.ok(tagged.dependencies);
     t.ok(tagged.devDependencies);
     t.is(tagged.dependencies[0].code, 0);
