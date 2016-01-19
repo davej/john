@@ -1,6 +1,6 @@
 # john [![Build Status](https://travis-ci.org/davej/john.svg?branch=master)](https://travis-ci.org/davej/john)
 
-> Make the npm3 node_modules folder easier to read/sort on OS X
+> Make npm3's node_modules folder easier to read/sort on OS X
 
 npm3 has flat dependency trees, this is a good thing for many reasons.
 Unfortunately, this means your `node_modules` folder might contain hundreds (or thousands?)
@@ -11,7 +11,7 @@ this makes your to-level dependencies readable and sortable again.
 
 *Note: This project is currently OS X only, but if you have ideas on how something similar could be implemented other platforms then create an issue.*
 
-![](https://cdn.rawgit.com/davej/john/usage.gif)
+![](https://cdn.rawgit.com/davej/john/master/usage.gif)
 
 ## CLI
 
@@ -22,7 +22,7 @@ $ npm install --global john
 ```
 $ john --help
 
-  Make the npm3 node_modules folder easier to read/sort on OS X
+  Make npm3's node_modules folder easier to read/sort on OS X
 
   Usage
     $ john
@@ -112,14 +112,14 @@ Default: `blue`
 Color tag to use for dependencies.
 
 Available Colors:
-  * 'gray'
-  * 'green'
-  * 'purple'
-  * 'blue'
-  * 'yellow'
-  * 'red'
-  * 'orange'
-  * 'clear' - This will remove all tags
+* gray
+* green
+* purple
+* blue
+* yellow
+* red
+* orange
+* clear
 
 ##### devDependencyColor
 
