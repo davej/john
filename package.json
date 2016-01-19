@@ -1,6 +1,6 @@
 {
   "name": "john",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Make npm3's flat dependencies easier to find and sort on OS X",
   "license": "MIT",
   "os": [
