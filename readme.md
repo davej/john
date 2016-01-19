@@ -1,6 +1,6 @@
 # john [![Build Status](https://travis-ci.org/davej/john.svg?branch=master)](https://travis-ci.org/davej/john)
 
-> Make npm3's node_modules folder easier to find and sort on OS X
+> Make npm3's flat dependencies easier to find and sort on OS X
 
 npm3 has flat dependency trees, this is a good thing for many reasons.
 Unfortunately, this means your `node_modules` folder might contain hundreds (or thousands?)
@@ -22,7 +22,7 @@ $ npm install --global john
 ```
 $ john --help
 
-  Make npm3's node_modules folder easier to find and sort on OS X
+  Make npm3's flat dependencies easier to find and sort on OS X
 
   Usage
     $ john
@@ -93,7 +93,7 @@ john('/path/to/project').then(
 
 Type: `string`
 
-The path to your projects root directory (that contains `package.json`).
+The path to your project's directory (that contains `package.json`).
 
 #### options
 
@@ -128,6 +128,9 @@ Default: `yellow`
 
 Color tag to use for devDependencies. See available colors above.
 
+## Why is this called John?
+
+'John' like 'Johnny' like 'Johnny Depp' like 'Dep[p]endency'. Pfft, mainly because it was short, simple and not already taken.
 
 ## License
 
