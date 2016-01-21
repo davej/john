@@ -3,13 +3,18 @@
 const pify = require('pify');
 const path = require('path');
 const stat = pify(require('fs').stat);
-const tag = require('finder-tag');
 const readPkgUp = require('read-pkg-up');
+const platform = process.platform.toLowerCase();
+const platformLib = require(`./lib/${platform}`);
+const supportedPlatforms = ['darwin'];
 
 const defaultOpts = {
   clear: false,
+  // osx-only options
   dependencyColor: 'blue',
   devDependencyColor: 'yellow'
+  // windows-only options
+  // ...
 };
 
 module.exports = (projectPath, opts) => {
@@ -26,27 +31,16 @@ module.exports = (projectPath, opts) => {
     Object.keys(deps || {}).map(dep => {
       const depPath = path.join(projectPath, 'node_modules', dep);
       return stat(depPath)
-        .then((stats) => stats.isDirectory() && {path: depPath, module: dep});
+        .then(stats => stats.isDirectory() && {path: depPath, module: dep});
     });
 
   const filterDirs = depInfo =>
     Promise.all(depInfo).then(deps => deps.filter(dep => Boolean(dep)));
 
-  const tagDirs = (deps, color) =>
-    Promise.all(deps.map(dep =>
-      tag(dep.path, color)
-        .then(data => {
-          data.module = dep.module;
-          return data;
-        })
-    ));
-
-  const tagModules = (deps, color) =>
-    filterDirs(getDepInfo(deps))
-      .then((deps) => tagDirs(deps, color));
+  const getDeps = deps => filterDirs(getDepInfo(deps));
 
   return (function main() {
-    if (process.platform !== 'darwin') {
+    if (supportedPlatforms.indexOf(platform) === -1) {
       return Promise.reject(new Error('only OS X systems are currently supported'));
     }
 
@@ -56,18 +50,23 @@ module.exports = (projectPath, opts) => {
 
     opts = Object.assign({}, defaultOpts, opts || {});
 
-    if (opts.clear) {
-      opts.dependencyColor = opts.devDependencyColor = 'clear';
+    if (typeof platformLib.handleOptions === 'function') {
+      opts = platformLib.handleOptions(opts);
     }
 
     return findRootPackage()
       .then(rootPackage =>
         Promise.all([
-          tagModules(rootPackage.dependencies, opts.dependencyColor),
-          tagModules(rootPackage.devDependencies, opts.devDependencyColor)
-        ]).then(tagged => ({
-          dependencies: tagged[0],
-          devDependencies: tagged[1]
+          getDeps(rootPackage.dependencies),
+          getDeps(rootPackage.devDependencies)
+        ]).then(deps =>
+          Promise.all([
+            platformLib.performAction('dependencies', deps[0], opts),
+            platformLib.performAction('devDependencies', deps[1], opts)
+          ])
+        ).then(affectedDeps => ({
+          dependencies: affectedDeps[0],
+          devDependencies: affectedDeps[1]
         }))
       );
   })();

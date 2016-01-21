@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 'use strict';
-var meow = require('meow');
-var john = require('./');
-var chalk = require('chalk');
+const meow = require('meow');
+const john = require('./');
+const chalk = require('chalk');
 
-var cli = meow([
+const cli = meow([
   'Usage',
   '  $ john',
   '',
@@ -34,7 +34,7 @@ var cli = meow([
   }
 });
 
-const terminalColor = (color) =>
+const terminalColor = color =>
   chalk[color] ? chalk[color](color) : color;
 
 const formatDepsLog = (deps, depType) => {
@@ -52,7 +52,7 @@ const formatDepsLog = (deps, depType) => {
 };
 
 john(process.cwd(), cli.flags).then(
-  (deps) => {
+  deps => {
     formatDepsLog(deps, 'dependencies');
     console.log();
     formatDepsLog(deps, 'devDependencies');
