@@ -54,20 +54,27 @@ module.exports = (projectPath, opts) => {
       opts = platformLib.handleOptions(opts);
     }
 
+    if (typeof platformLib.performPreAction !== 'function') {
+      platformLib.performPreAction = () => Promise.resolve();
+    }
+
     return findRootPackage()
       .then(rootPackage =>
-        Promise.all([
-          getDeps(rootPackage.dependencies),
-          getDeps(rootPackage.devDependencies)
-        ]).then(deps =>
-          Promise.all([
-            platformLib.performAction('dependencies', deps[0], projectPath, opts),
-            platformLib.performAction('devDependencies', deps[1], projectPath, opts)
-          ])
-        ).then(affectedDeps => ({
-          dependencies: affectedDeps[0],
-          devDependencies: affectedDeps[1]
-        }))
+        platformLib.performPreAction(projectPath, opts)
+          .then(() =>
+            Promise.all([
+              getDeps(rootPackage.dependencies),
+              getDeps(rootPackage.devDependencies)
+            ]).then(deps =>
+              Promise.all([
+                platformLib.performAction('dependencies', deps[0], opts),
+                platformLib.performAction('devDependencies', deps[1], opts)
+              ])
+            ).then(affectedDeps => ({
+              dependencies: affectedDeps[0],
+              devDependencies: affectedDeps[1]
+            }))
+          )
       );
   })();
 };
