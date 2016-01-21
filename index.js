@@ -61,8 +61,8 @@ module.exports = (projectPath, opts) => {
           getDeps(rootPackage.devDependencies)
         ]).then(deps =>
           Promise.all([
-            platformLib.performAction('dependencies', deps[0], opts),
-            platformLib.performAction('devDependencies', deps[1], opts)
+            platformLib.performAction('dependencies', deps[0], projectPath, opts),
+            platformLib.performAction('devDependencies', deps[1], projectPath, opts)
           ])
         ).then(affectedDeps => ({
           dependencies: affectedDeps[0],

@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 'use strict';
+
 const meow = require('meow');
 const john = require('./');
 const chalk = require('chalk');
