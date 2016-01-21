@@ -5,8 +5,7 @@ const path = require('path');
 const stat = pify(require('fs').stat);
 const readPkgUp = require('read-pkg-up');
 const platform = process.platform.toLowerCase();
-const platformLib = require(`./lib/${platform}`);
-const supportedPlatforms = ['darwin'];
+const supportedPlatforms = require('./package').os;
 
 const defaultOpts = {
   clear: false,
@@ -43,6 +42,8 @@ module.exports = (projectPath, opts) => {
     if (supportedPlatforms.indexOf(platform) === -1) {
       return Promise.reject(new Error('only OS X systems are currently supported'));
     }
+
+    const platformLib = require(`./lib/${platform}`);
 
     if (typeof projectPath !== 'string') {
       return Promise.reject(new TypeError('projectPath path should be a string'));
