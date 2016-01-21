@@ -14,7 +14,7 @@ const supportedPlatforms = require('./package').os;
 
   const cli = meow(
     platformLib.cliHelpText(),
-    platformLib.cliOptions ? platformLib.cliOptions() : {}
+    typeof platformLib.cliOptions === 'function' ? platformLib.cliOptions() : {}
   );
 
   john(process.cwd(), cli.flags).then(
