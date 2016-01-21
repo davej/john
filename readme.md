@@ -7,7 +7,7 @@ Unfortunately, this means your `node_modules` folder might contain hundreds (or 
 of modules and that makes it difficult to quickly debug/hack on issues with top-level dependencies.
 
 John is your man. He puts color tags on your top-level dependencies and devDependencies,
-this makes your top-level dependencies easier to find and sort.
+this makes your top-level dependencies easier to find and sort in Finder. If you often use the terminal instead of finder then you can also do `ls -l | grep @` to list the folders with tags.
 
 *Note: This project is currently OS X only, but if you have ideas on how something similar could be implemented other platforms then create an issue.*
 
