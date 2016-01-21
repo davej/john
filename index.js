@@ -40,7 +40,7 @@ module.exports = (projectPath, opts) => {
 
   return (function main() {
     if (supportedPlatforms.indexOf(platform) === -1) {
-      return Promise.reject(new Error('only OS X systems are currently supported'));
+      return Promise.reject(new Error(`${platform} unsupported, supported platforms: ${supportedPlatforms}`));
     }
 
     const platformLib = require(`./lib/${platform}`);
