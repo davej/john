@@ -12,7 +12,10 @@ const supportedPlatforms = require('./package').os;
   }
   const platformLib = require(`./lib/${platform}`);
 
-  const cli = meow(platformLib.cliHelpText(), platformLib.cliOptions);
+  const cli = meow(
+    platformLib.cliHelpText(),
+    platformLib.cliOptions ? platformLib.cliOptions() : {}
+  );
 
   john(process.cwd(), cli.flags).then(
     deps => {
