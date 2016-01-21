@@ -9,7 +9,7 @@ of modules and that makes it difficult to quickly debug/hack on issues with top-
 John is your man. He puts color tags on your top-level dependencies and devDependencies,
 this makes your top-level dependencies easier to find and sort in Finder. If you often use the terminal instead of finder then you can also do `ls -l | grep @` to list the folders with tags.
 
-*Note: This project is currently OS X only, but if you have ideas on how something similar could be implemented other platforms then create an issue.*
+*Note: This project is currently OS X only, but if you have ideas on how something similar could be implemented on other platforms then create an issue.*
 
 <p align="center"><img src ="https://cdn.rawgit.com/davej/john/a2b79a0ffc8da296d382bd99b29977195cb3976c/usage.gif" /></p>
 
