@@ -1,10 +1,11 @@
 {
   "name": "john",
   "version": "1.0.1",
-  "description": "Make npm3's flat dependencies easier to find and sort on OS X",
+  "description": "Make npm3's flat dependencies easier to find and sort",
   "license": "MIT",
   "os": [
-    "darwin"
+    "darwin",
+    "win32"
   ],
   "repository": "davej/john",
   "author": {
@@ -12,6 +13,12 @@
     "email": "dave@davejeffery.com",
     "url": "twitter.com/DaveJ"
   },
+  "contributors": [
+    {
+      "name": "Enzo Martin",
+      "email": "enzo.r.martin@gmail.com"
+    }
+  ],
   "bin": "cli.js",
   "engines": {
     "node": ">=4"
@@ -20,6 +27,7 @@
     "test": "xo && ava"
   },
   "files": [
+    "lib",
     "index.js",
     "cli.js"
   ],
@@ -36,22 +44,30 @@
     "color",
     "colour",
     "finder",
+    "windows",
+    "explorer",
     "mavericks",
     "yosemite",
     "mac"
   ],
   "dependencies": {
     "chalk": "^1.1.1",
-    "finder-tag": "^1.0.2",
     "meow": "^3.6.0",
     "pify": "^2.3.0",
     "read-pkg-up": "^1.0.1"
   },
+  "optionalDependencies": {
+    "finder-tag": "^1.0.2",
+    "fswin": "^2.15.1031"
+  },
   "devDependencies": {
-    "ava": "^0.8.0",
+    "ava": "^0.11.0",
     "xo": "^0.12.1"
   },
   "xo": {
-    "space": 2
+    "space": 2,
+    "rules": {
+      "linebreak-style": 0
+    }
   }
 }
