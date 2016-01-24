@@ -9,11 +9,12 @@ const supportedPlatforms = require('./package').os;
 
 const defaultOpts = {
   clear: false,
-  // osx-only options
+  // OSX options
   dependencyColor: 'blue',
-  devDependencyColor: 'yellow'
-  // windows-only options
-  // ...
+  devDependencyColor: 'yellow',
+  // Windows options
+  dependencyHidden: false,
+  devDependencyHidden: false
 };
 
 module.exports = (projectPath, opts) => {
@@ -29,8 +30,10 @@ module.exports = (projectPath, opts) => {
   const getDepInfo = deps =>
     Object.keys(deps || {}).map(dep => {
       const depPath = path.join(projectPath, 'node_modules', dep);
+      // Catch handles dependencies that are not installed
       return stat(depPath)
-        .then(stats => stats.isDirectory() && {path: depPath, module: dep});
+        .then(stats => stats.isDirectory() && {path: depPath, module: dep})
+        .catch(() => false);
     });
 
   const filterDirs = depInfo =>
