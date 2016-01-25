@@ -113,7 +113,8 @@ john('/path/to/project').then(
   (result) => console.log(result)
   // {
   //   dependencies: [
-  //     { code: 0,
+  //     {
+  //       code: 0,
   //       command: 'xattr …',
   //       path: '/path/to/project/node_modules/finder-tag',
   //       tag: 'blue',
@@ -149,44 +150,32 @@ Default: `false`
 
 Clear all tags / show all dependencies.
 
----
 
-##### dependencyColor
-
-**Note:** OSX Only
+##### dependencyColor *(OS X only)*
 
 Type: `string`  
 Default: `blue`
 
 Color tag to use for dependencies. [See available colors](#available-colors).
 
----
 
-##### devDependencyColor
-
-**Note:** OSX Only
+##### devDependencyColor *(OS X only)*
 
 Type: `string`  
 Default: `yellow`
 
 Color tag to use for devDependencies. [See available colors](#available-colors).
 
----
 
-##### dependencyHidden
-
-**Note:** Windows only
+##### dependencyHidden *(Windows only)*
 
 Type: `boolean`  
 Default: `false`
 
 Set to `true` to hide dependencies
 
----
 
-##### devDependencyHidden
-
-**Note:** Windows only
+##### devDependencyHidden *(Windows only)*
 
 Type: `boolean`  
 Default: `false`
@@ -195,8 +184,7 @@ Set to `true` to hide dev dependencies
 
 ---
 
-#### Available Colors:
-**Note:** OSX only
+#### Available Colors *(OS X only)*:
 
 * gray
 * green
@@ -205,7 +193,7 @@ Set to `true` to hide dev dependencies
 * yellow
 * red
 * orange
-* clear
+* clear (This will remove all tags)
 
 ## Why is this called John?
 
