@@ -1,8 +1,7 @@
 'use strict';
 
-const pify = require('pify');
 const path = require('path');
-const stat = pify(require('fs').stat);
+const helpers = require('./lib/helpers');
 const readPkgUp = require('read-pkg-up');
 const platform = process.platform.toLowerCase();
 const supportedPlatforms = require('./package').os;
@@ -18,28 +17,16 @@ const defaultOpts = {
 };
 
 module.exports = (projectPath, opts) => {
+  let modulesPath;
   const findRootPackage = () =>
     readPkgUp({cwd: projectPath}).then(pkg => {
       if (!pkg.pkg) {
         return Promise.reject(new Error(`couldn't find package.json in ${projectPath}`));
       }
       projectPath = path.dirname(pkg.path);
+      modulesPath = path.join(projectPath, 'node_modules');
       return pkg.pkg;
     });
-
-  const getDepInfo = deps =>
-    Object.keys(deps || {}).map(dep => {
-      const depPath = path.join(projectPath, 'node_modules', dep);
-      // Catch handles dependencies that are not installed
-      return stat(depPath)
-        .then(stats => stats.isDirectory() && {path: depPath, module: dep})
-        .catch(() => false);
-    });
-
-  const filterDirs = depInfo =>
-    Promise.all(depInfo).then(deps => deps.filter(dep => Boolean(dep)));
-
-  const getDeps = deps => filterDirs(getDepInfo(deps));
 
   return (function main() {
     if (supportedPlatforms.indexOf(platform) === -1) {
@@ -67,8 +54,8 @@ module.exports = (projectPath, opts) => {
         platformLib.performPreAction(projectPath, opts)
           .then(() =>
             Promise.all([
-              getDeps(rootPackage.dependencies),
-              getDeps(rootPackage.devDependencies)
+              helpers.getDeps(modulesPath, rootPackage.dependencies),
+              helpers.getDeps(modulesPath, rootPackage.devDependencies)
             ]).then(deps =>
               Promise.all([
                 platformLib.performAction('dependencies', deps[0], opts),
