@@ -8,12 +8,23 @@
 Unfortunately, this means your `node_modules` folder might contain hundreds (or thousands?)
 of modules and that makes it difficult to quickly debug/hack on issues with top-level dependencies.
 
-## John is your man.
+#### On OS X
+Puts color tags on your top-level dependencies and devDependencies,
+making top-level dependencies easier to find and sort in Finder.
+
+If you often use the terminal instead of finder then you can also do `ls -l | grep @` to list the folders with tags.
+
+<p align="center"><img src="https://cdn.rawgit.com/davej/john/a2b79a0ffc8da296d382bd99b29977195cb3976c/usage.gif" /></p>
+
+#### On Windows
+Hides away non top-level dependencies and devDependencies, leaving you with just the modules that are important to you.
+
+<p align="center"><img src="https://cdn.rawgit.com/davej/john/6bc236d409c62d1f2d3603ec5de9cec504692efd/media/windows-usage.gif" /></p>
+
 > *<strong>Note</strong>: This project is currently OS X & Windows only, but if you have ideas on how something similar could be implemented on Linux or other platforms then create an issue.*
 
-* [Functionality](#cli)
-  * [OS X](#on-os-x)
-  * [Windows](#on-windows)
+## Table of Contents
+
 * [CLI](#cli)
   * [OS X](#os-x)
   * [Windows](#windows)
@@ -23,21 +34,6 @@ of modules and that makes it difficult to quickly debug/hack on issues with top-
 * [Why is this called John?](#why-is-this-called-john)
 * [Contributors](#contributors)
 * [License](#license)
-
-## Functionality
-
-#### On OS X
-Puts color tags on your top-level dependencies and devDependencies,
-making top-level dependencies easier to find and sort in Finder.
-
-If you often use the terminal instead of finder then you can also do `ls -l | grep @` to list the folders with tags.
-
-<p align="center"><img src ="https://cdn.rawgit.com/davej/john/a2b79a0ffc8da296d382bd99b29977195cb3976c/usage.gif" /></p>
-
-#### On Windows
-Hides away non top-level dependencies and devDependencies, leaving you with just the modules that are important to you.
-
-<p align="center"><img src ="https://zippy.gfycat.com/ShimmeringThirstyAmericanwarmblood.gif" /></p>
 
 ## CLI
 
