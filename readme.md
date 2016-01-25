@@ -30,7 +30,7 @@ Hides away non top-level dependencies and devDependencies, leaving you with just
   * [Windows](#windows)
 * [Using Programmatically](#using-programmatically)
 * [API](#api)
-  * [See available colors](#available-colors)
+  * [See available colors](#available-colors-os-x-only)
 * [Why is this called John?](#why-is-this-called-john)
 * [Contributors](#contributors)
 * [License](#license)
@@ -156,7 +156,7 @@ Clear all tags / show all dependencies.
 Type: `string`  
 Default: `blue`
 
-Color tag to use for dependencies. [See available colors](#available-colors).
+Color tag to use for dependencies. [See available colors](#available-colors-os-x-only).
 
 
 ##### devDependencyColor *(OS X only)*
@@ -164,7 +164,7 @@ Color tag to use for dependencies. [See available colors](#available-colors).
 Type: `string`  
 Default: `yellow`
 
-Color tag to use for devDependencies. [See available colors](#available-colors).
+Color tag to use for devDependencies. [See available colors](#available-colors-os-x-only).
 
 
 ##### dependencyHidden *(Windows only)*
