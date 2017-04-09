@@ -1,10 +1,10 @@
 # john
 
-> Make npm3's flat dependencies easier to find and sort
+> Make npm's flat dependencies easier to find and sort
 
 [![npm version](https://img.shields.io/npm/v/john.svg)](https://www.npmjs.com/package/john) [![Build status: OS X](https://img.shields.io/travis/davej/john/master.svg?label=OS%20X)](https://travis-ci.org/davej/john) [![Build status: Windows](https://img.shields.io/appveyor/ci/davej/john/master.svg?label=windows)](https://ci.appveyor.com/project/davej/john/branch/master)
 
-`npm3` has flat dependency trees, this is a good thing for many reasons.
+`npm3+` has flat dependency trees, this is a good thing for many reasons.
 Unfortunately, this means your `node_modules` folder might contain hundreds (or thousands?)
 of modules and that makes it difficult to quickly debug/hack on issues with top-level dependencies.
 
